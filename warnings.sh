@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-exec $PWD/core.sh "Warning"
+exec "$PWD/core.sh" "Warning"

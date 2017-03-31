@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 LEVEL=$1
-if [ -z ${LEVEL+x} ]; then
+if [ -z "${LEVEL+x}" ]; then
     LEVEL="Warning";
 fi
 
@@ -13,7 +13,7 @@ PROJECTS_ARRAY=($PROJECTS)
 for project in "${PROJECTS_ARRAY[@]}" ; do
     echo "Project: $project"
 
-    oc get events --output=json -n $project | jq '.items | .[] | select(.type=="'$LEVEL'")' |
+    oc get events --output=json -n "$project" | jq '.items | .[] | select(.type=="'$LEVEL'")' |
         jq '.metadata.name + " >> " +  .reason + " @ " + .metadata.creationTimestamp + " || " + .message'
 
     echo
